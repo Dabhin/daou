@@ -1,7 +1,7 @@
 package com.example.app.config;
 
 //import com.example.app.service.UserService;
-import com.example.app.service.UserInfoService;
+import com.example.app.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -22,7 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserInfoService userService;
+    private UserService userService;
 
 //    @Bean
 //    public PasswordEncoder noOpPasswordEncoder(){

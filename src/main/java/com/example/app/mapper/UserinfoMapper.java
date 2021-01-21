@@ -63,11 +63,11 @@ public interface UserinfoMapper {
 
     /**
      * @mbg.generated generated automatically, do not modify!
+     * @param record
      */
     @Update({
         "update userinfo",
-        "set U_PASSWORD = #{uPassword,jdbcType=VARCHAR},",
-          "U_AUTH = #{uAuth,jdbcType=CHAR}",
+        "set U_PASSWORD = #{uPassword,jdbcType=VARCHAR}",
         "where U_ID = #{uId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Userinfo record);

@@ -10,6 +10,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div sec:authorize="isAuthenticated()">
                 <button th:onclick="location.href='/logout'">logout</button>
+                <button th:onclick="location.href='/user/updatePassword'">change password</button>
             </div>
             <div id="content">
                 <th:block layout:fragment="content"></th:block>
