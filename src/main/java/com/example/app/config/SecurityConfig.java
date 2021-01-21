@@ -1,6 +1,7 @@
 package com.example.app.config;
 
 //import com.example.app.service.UserService;
+import com.example.app.service.AuthProvider;
 import com.example.app.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthProvider authProvider;
+
 //    @Bean
 //    public PasswordEncoder noOpPasswordEncoder(){
 //        return NoOpPasswordEncoder.getInstance();
@@ -42,27 +46,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/board", true)
-                .failureUrl("/")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .and()
-                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+            .antMatchers("/", "/login").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .usernameParameter("username")
+            .passwordParameter("password")
+            .defaultSuccessUrl("/board", true)
+            .failureUrl("/")
+            .permitAll()
+            .and()
+            .logout()
+            .logoutSuccessUrl("/")
+            .permitAll()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .and()
+            .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+        http.authenticationProvider(authProvider);
+
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+//        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        auth.authenticationProvider(authProvider);
     }
 }

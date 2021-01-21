@@ -18,17 +18,23 @@ com/example/app/Application.java
  com.example.app.Application
 com/example/app/model/Boardlike.java
  com.example.app.model.Boardlike
-com/example/app/controller/UserController.java
- com.example.app.controller.UserController
+com/example/app/model/MyAuthenticaion.java
+ com.example.app.model.MyAuthenticaion
 com/example/app/controller/BoardController.java
  com.example.app.controller.BoardController
 com/example/app/service/UserInfoService.java
  com.example.app.service.UserInfoService
-com/example/app/config/SecurityConfig.java
- com.example.app.config.SecurityConfig
-com/example/app/mapper/UserinfoMapper.java
- com.example.app.mapper.UserinfoMapper
-com/example/app/service/UserService.java
- com.example.app.service.UserService
 com/example/app/service/impl/UserInfoServiceImpl.java
  com.example.app.service.impl.UserInfoServiceImpl
+com/example/app/mapper/UserinfoMapper.java
+ com.example.app.mapper.UserinfoMapper
+com/example/app/service/AuthProvider.java
+ com.example.app.service.AuthProvider
+com/example/app/service/AuthorizationService.java
+ com.example.app.service.AuthorizationService
+com/example/app/config/SecurityConfig.java
+ com.example.app.config.SecurityConfig
+com/example/app/service/UserService.java
+ com.example.app.service.UserService
+com/example/app/controller/UserController.java
+ com.example.app.controller.UserController

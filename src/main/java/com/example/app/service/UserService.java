@@ -17,12 +17,15 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserinfoMapper mapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Userinfo user = mapper.selectByPrimaryKey(username);
         UserDetails userDetails = null;
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        User.UserBuilder builder = User.builder().passwordEncoder(encoder::encode);
+        User.UserBuilder builder = User.builder().passwordEncoder(passwordEncoder::encode);
 
         if (user == null) {
             throw new UsernameNotFoundException(username + " is not found");

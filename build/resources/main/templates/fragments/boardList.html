@@ -9,6 +9,11 @@
             <div>
                <h1>boardlist</h1>
                 <div>
+                    <select id="searchType" name="searchType">
+                        <option th:value="title">title</option>
+                        <option th:value="writer">Writer</option>
+                        <option th:value="no">No.</option>
+                    </select>
                     <input type="text" placeholder="Search.." name="search">
                     <button type="button" class="btn btn-primary">Search</button>
                 </div>
@@ -30,7 +35,7 @@
                         th:onclick="'window.location.href=\'' + @{/detailBoard/{idx}(idx=${boardInfo.bNo})} + '\''">
                         <td th:text="${boardInfo.bNo}">board_idx</td>
                         <td th:text="${boardInfo.bTitle}">title</td>
-                        <td th:text="${boardInfo.bContent}">content</td>
+                        <td th:text="${boardInfo.writerId}">content</td>
                         <td th:text="${#dates.format(boardInfo.updateDate, 'yyyy/MM/dd')}">regdate</td>
                     </tr>
                 <tr th:unless="${totalCnt} > 0">

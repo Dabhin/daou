@@ -4,6 +4,7 @@ import com.example.app.model.Boardinfo;
 import com.example.app.service.BoardInfoServie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,6 @@ public class BoardController {
 
     @RequestMapping("/board")
     private String getboardList(Model model){
-
         List<Boardinfo> boardList = boardInfoServie.getBoardList();
         model.addAttribute("boardList", boardList);
         model.addAttribute("totalCnt", boardList.size());
@@ -28,8 +28,9 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/board/insert", method = RequestMethod.POST)
-    private String insert(@AuthenticationPrincipal UserDetails userDetails, Boardinfo boardinfo){
-        boardinfo.setWriterId(userDetails.getUsername());
+    private String insert(Boardinfo boardinfo){
+        String id = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        boardinfo.setWriterId(id);
         boardinfo.setCreateDate(Date.valueOf(LocalDate.now()));
         boardinfo.setUpdateDate(Date.valueOf(LocalDate.now()));
         boardInfoServie.insertBoardInfo(boardinfo);
@@ -38,10 +39,11 @@ public class BoardController {
 
 
     @RequestMapping(value = "/detailBoard/{idx}", method = RequestMethod.GET)
-    private String detailBoard(@AuthenticationPrincipal UserDetails userDetails, Model model, @PathVariable("idx") String idx){
+    private String detailBoard(Model model, @PathVariable("idx") String idx){
+        String id = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         Boardinfo boardinfo = boardInfoServie.getBoardInfo(Integer.parseInt(idx));
         model.addAttribute("boardDetail", boardinfo);
-        if (userDetails.getUsername().equals(boardinfo.getWriterId())){
+        if (id.equals(boardinfo.getWriterId())){
             model.addAttribute("bAuth",true);
         } else {
             model.addAttribute("bAuth",false);
@@ -58,11 +60,12 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/board/update", method = RequestMethod.POST)
-    private String update(@AuthenticationPrincipal UserDetails userDetails, Boardinfo boardinfo){
+    private String update(Boardinfo boardinfo){
         boardinfo.setUpdateDate(Date.valueOf(LocalDate.now()));
         boardInfoServie.updateBoardInfo(boardinfo);
         return "redirect:/detailBoard/" + boardinfo.getBNo();
     }
+
     @RequestMapping(value = "/board/delete/{idx}", method = RequestMethod.GET)
     private String delete(@PathVariable("idx") String idx){
         boardInfoServie.deleteBoardInfo(Integer.parseInt(idx));
