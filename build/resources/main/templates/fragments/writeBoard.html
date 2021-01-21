@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <form role="form" th:object="${boardinfo}" th:action="@{/board/insert}" method="post" enctype="multipart/form-data" required="required">
+            <div>
+                <label >Title</label>
+                <input type="text" th:field="*{bTitle}" id="title" name="title">
+            </div>
+            <div>
+                <label >Content</label>
+                <textarea th:field="*{bContent}" id="contents" name="contents" rows="10" cols="100" required="required">
+        </textarea>
+            </div>
+            <div>
+                <input type="submit" th:value="save">
+                <input type="reset" th:value="cancel" th:onclick="location.href='/board'">
+            </div>
+        </form>
+    </div>
+</th:block>
+</html>

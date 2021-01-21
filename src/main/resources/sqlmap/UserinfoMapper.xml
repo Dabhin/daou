@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.UserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.app.model.Userinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="U_ID" jdbcType="VARCHAR" property="uId" />
+    <result column="U_PASSWORD" jdbcType="VARCHAR" property="uPassword" />
+    <result column="U_AUTH" jdbcType="CHAR" property="uAuth" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    U_ID, U_PASSWORD, U_AUTH
+  </sql>
+  <insert id="insertSelective" parameterType="com.example.app.model.Userinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        U_ID,
+      </if>
+      <if test="uPassword != null">
+        U_PASSWORD,
+      </if>
+      <if test="uAuth != null">
+        U_AUTH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null">
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uAuth != null">
+        #{uAuth,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.app.model.Userinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update userinfo
+    <set>
+      <if test="uPassword != null">
+        U_PASSWORD = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uAuth != null">
+        U_AUTH = #{uAuth,jdbcType=CHAR},
+      </if>
+    </set>
+    where U_ID = #{uId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.BoardinfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.app.model.Boardinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="B_NO" jdbcType="INTEGER" property="bNo" />
+    <result column="B_TITLE" jdbcType="VARCHAR" property="bTitle" />
+    <result column="B_CNT" jdbcType="INTEGER" property="bCnt" />
+    <result column="WRITER_ID" jdbcType="VARCHAR" property="writerId" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.app.model.Boardinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <result column="B_CONTENT" jdbcType="LONGVARCHAR" property="bContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    B_NO, B_TITLE, B_CNT, WRITER_ID, UPDATE_DATE, CREATE_DATE
+  </sql>
+  <sql id="Blob_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    B_CONTENT
+  </sql>
+  <insert id="insertSelective" parameterType="com.example.app.model.Boardinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into boardinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bNo != null">
+        B_NO,
+      </if>
+      <if test="bTitle != null">
+        B_TITLE,
+      </if>
+      <if test="bCnt != null">
+        B_CNT,
+      </if>
+      <if test="writerId != null">
+        WRITER_ID,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="bContent != null">
+        B_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bNo != null">
+        #{bNo,jdbcType=INTEGER},
+      </if>
+      <if test="bTitle != null">
+        #{bTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bCnt != null">
+        #{bCnt,jdbcType=INTEGER},
+      </if>
+      <if test="writerId != null">
+        #{writerId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bContent != null">
+        #{bContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.app.model.Boardinfo">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update boardinfo
+    <set>
+      <if test="bTitle != null">
+        B_TITLE = #{bTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bCnt != null">
+        B_CNT = #{bCnt,jdbcType=INTEGER},
+      </if>
+      <if test="writerId != null">
+        WRITER_ID = #{writerId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bContent != null">
+        B_CONTENT = #{bContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where B_NO = #{bNo,jdbcType=INTEGER}
+  </update>
+</mapper>

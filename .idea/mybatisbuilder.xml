@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MybatisBuilder.project.settings">
+    <option name="connectionInfoList">
+      <list>
+        <ConnectionInfo>
+          <option name="database" value="test" />
+          <option name="description" value="test" />
+          <option name="driverClass" value="" />
+          <option name="driverLibrary" value="" />
+          <option name="driverType" value="MySQL" />
+          <option name="host" value="localhost" />
+          <option name="id" value="323b2cfa23184468be0ae55156776f58" />
+          <option name="name" value="test" />
+          <option name="port" value="3306" />
+          <option name="url" value="" />
+          <option name="userName" value="root" />
+        </ConnectionInfo>
+      </list>
+    </option>
+    <option name="defaultParameters">
+      <DefaultParameters>
+        <option name="renameConfig">
+          <Config>
+            <option name="mapperTypePattern" value="" />
+            <option name="exampleTypePattern" value="" />
+            <option name="sqlFileNamePattern" value="" />
+          </Config>
+        </option>
+        <option name="selectWithLockConfig">
+          <SelectWithLockConfig>
+            <option name="byPrimaryKeyWithLockOverride" value="" />
+            <option name="byExampleWithLockOverride" value="" />
+          </SelectWithLockConfig>
+        </option>
+      </DefaultParameters>
+    </option>
+    <option name="historyMap">
+      <map>
+        <entry key="JAVA_CLIENT_PACKAGE">
+          <value>
+            <list>
+              <option value="com.example.app.mapper" />
+              <option value="mapper" />
+            </list>
+          </value>
+        </entry>
+        <entry key="JAVA_MODEL_PACKAGE">
+          <value>
+            <list>
+              <option value="com.example.app.model" />
+              <option value="model" />
+            </list>
+          </value>
+        </entry>
+        <entry key="SQL_MAP_PACKAGE">
+          <value>
+            <list>
+              <option value="sqlmap" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastGeneratorParamWrapper">
+      <GeneratorParamWrapper>
+        <option name="defaultTableConfigWrapper">
+          <TableConfigurationWrapper>
+            <option name="countByExampleStatementEnabled" value="false" />
+            <option name="deleteByExampleStatementEnabled" value="false" />
+            <option name="domainObjectRenamingRule">
+              <DomainObjectRenamingRule>
+                <option name="replaceString" value="" />
+                <option name="searchString" value="" />
+              </DomainObjectRenamingRule>
+            </option>
+            <option name="generatedKeyWrapper">
+              <GeneratedKeyWrapper>
+                <option name="column" value="" />
+                <option name="statement" value="" />
+              </GeneratedKeyWrapper>
+            </option>
+            <option name="selectByExampleStatementEnabled" value="false" />
+            <option name="updateByExampleStatementEnabled" value="false" />
+          </TableConfigurationWrapper>
+        </option>
+        <option name="javaClientConfig">
+          <JavaClientGeneratorConfiguration>
+            <option name="configurationType" value="MIXEDMAPPER" />
+            <option name="targetPackage" value="com.example.app.mapper" />
+            <option name="targetProject" value="D:\workspace\daou\src\main\java" />
+          </JavaClientGeneratorConfiguration>
+        </option>
+        <option name="javaModelConfig">
+          <JavaModelGeneratorConfiguration>
+            <option name="targetPackage" value="com.example.app.model" />
+            <option name="targetProject" value="D:\workspace\daou\src\main\java" />
+          </JavaModelGeneratorConfiguration>
+        </option>
+        <option name="selectedPlugins">
+          <map>
+            <entry key="com.chuntung.plugin.mybatis.builder.generator.plugins.LombokPlugin" />
+            <entry key="com.chuntung.plugin.mybatis.builder.generator.plugins.MapperAnnotationPlugin">
+              <value>
+                <PluginConfigWrapper>
+                  <option name="json" value="{&quot;customAnnotationType&quot;:&quot;org.springframework.stereotype.Repository&quot;}" />
+                  <option name="type" value="com.chuntung.plugin.mybatis.builder.generator.plugins.MapperAnnotationPlugin$Config" />
+                </PluginConfigWrapper>
+              </value>
+            </entry>
+            <entry key="com.chuntung.plugin.mybatis.builder.generator.plugins.selectwithlock.SelectWithLockPlugin">
+              <value>
+                <PluginConfigWrapper>
+                  <option name="json" value="{&quot;byPrimaryKeyWithLockOverride&quot;:&quot;&quot;,&quot;byExampleWithLockOverride&quot;:&quot;&quot;,&quot;byPrimaryKeyWithLockEnabled&quot;:true,&quot;byExampleWithLockEnabled&quot;:false}" />
+                  <option name="type" value="com.chuntung.plugin.mybatis.builder.generator.plugins.selectwithlock.SelectWithLockConfig" />
+                </PluginConfigWrapper>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="sqlMapConfig">
+          <SqlMapGeneratorConfiguration>
+            <option name="targetPackage" value="sqlmap" />
+            <option name="targetProject" value="$PROJECT_DIR$/src/main/resources" />
+          </SqlMapGeneratorConfiguration>
+        </option>
+      </GeneratorParamWrapper>
+    </option>
+    <option name="tableInfoMap">
+      <map>
+        <entry key="test#boardinfo">
+          <value>
+            <TableInfo>
+              <option name="customColumns">
+                <list />
+              </option>
+              <option name="database" value="test" />
+              <option name="domainName" value="Boardinfo" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="boardinfo" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="test#boardlike">
+          <value>
+            <TableInfo>
+              <option name="database" value="test" />
+              <option name="domainName" value="Boardlike" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="boardlike" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="test#userinfo">
+          <value>
+            <TableInfo>
+              <option name="database" value="test" />
+              <option name="domainName" value="Userinfo" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="userinfo" />
+            </TableInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

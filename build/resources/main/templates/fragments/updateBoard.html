@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <h1>update</h1>
+        <form role="form" th:object="${boardinfo}" th:action="@{/board/update}" method="post" enctype="multipart/form-data" required="required">
+            <input type="text" hidden th:field="*{bNo}" th:value="${bNo}" >
+            <div>
+                <label >Title</label>
+                <input type="text" th:field="*{bTitle}" th:value="${bTitle}" id="title" name="title">
+            </div>
+            <div>
+                <label >Content</label>
+                <textarea th:field="*{bContent}" th:value="${bContent}" id="contents" name="contents" rows="10" cols="100" required="required">
+        </textarea>
+            </div>
+            <div>
+                <input type="button" th:value="list" onclick="location.href='/board'">
+                <input type="submit" th:value="save">
+<!--                <input type="reset" th:value="cancel">-->
+            </div>
+        </form>
+    </div>
+</th:block>
+</html>

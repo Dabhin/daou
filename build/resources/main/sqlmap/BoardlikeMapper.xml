@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.BoardlikeMapper">
+  <resultMap id="BaseResultMap" type="com.example.app.model.Boardlike">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <result column="B_NO" jdbcType="INTEGER" property="bNo" />
+    <result column="U_ID" jdbcType="VARCHAR" property="uId" />
+    <result column="B_LIKE" jdbcType="CHAR" property="bLike" />
+  </resultMap>
+  <insert id="insertSelective" parameterType="com.example.app.model.Boardlike">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into boardlike
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bNo != null">
+        B_NO,
+      </if>
+      <if test="uId != null">
+        U_ID,
+      </if>
+      <if test="bLike != null">
+        B_LIKE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bNo != null">
+        #{bNo,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="bLike != null">
+        #{bLike,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

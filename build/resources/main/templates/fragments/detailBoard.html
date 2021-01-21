@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <h1>detail</h1>
+            <table>
+                <tr>
+                    <td >
+                        <label >Title</label>
+                    </td>
+                    <td colspan="3">
+                        <p th:text="${boardDetail.bTitle}"}></p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label >Count</label>
+                    </td>
+                    <td>
+                        <p th:text="${boardDetail.bCnt}"></p>
+                    </td>
+                    <td>
+                        <label >Date</label>
+                    </td>
+                    <td>
+                        <p th:text="${#dates.format(boardDetail.updateDate, 'yyyy/MM/dd')}"></p>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <label >Content</label>
+                <p th:text="${boardDetail.bContent}"></p>
+            </div>
+            <div>
+                <input type="button" th:value="list" th:onclick="location.href='/board'">
+                <a th:if="${bAuth} == true">
+                    <input type="button" th:value="update"
+                           th:onclick="'location.href=\'' + @{/updateBoard/{idx}(idx=${boardDetail.bNo})} + '\''">
+                    <input type="button" th:value="delete"
+                           th:onclick="'location.href=\'' + @{/board/delete/{idx}(idx=${boardDetail.bNo})} + '\''" >
+                </a>
+            </div>
+    </div>
+</th:block>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row col-md-7 table-responsive">
+            <div>
+               <h1>boardlist</h1>
+                <div>
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="button" class="btn btn-primary">Search</button>
+                </div>
+                <div>
+                    <button type="button" class="btn" onclick="location.href='/writeBoard'">Write</button>
+                </div>
+            </div>
+            <table class="table devCss" id="listTable">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Writer</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${totalCnt} > 0" th:each="boardInfo : ${boardList}"
+                        th:onclick="'window.location.href=\'' + @{/detailBoard/{idx}(idx=${boardInfo.bNo})} + '\''">
+                        <td th:text="${boardInfo.bNo}">board_idx</td>
+                        <td th:text="${boardInfo.bTitle}">title</td>
+                        <td th:text="${boardInfo.bContent}">content</td>
+                        <td th:text="${#dates.format(boardInfo.updateDate, 'yyyy/MM/dd')}">regdate</td>
+                    </tr>
+                <tr th:unless="${totalCnt} > 0">
+                    <td colspan="4">게시물 없음</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</th:block>
+</html>

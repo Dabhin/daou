@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div sec:authorize="isAuthenticated()">
+                <button th:onclick="location.href='/logout'">logout</button>
+            </div>
+            <div id="content">
+                <th:block layout:fragment="content"></th:block>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
